@@ -1,6 +1,8 @@
 package app;
 
 
+import bean.Document;
+import repository.BaseRepository;
 import util.CleanUtil;
 
 import java.io.File;
@@ -9,36 +11,23 @@ import java.util.Scanner;
 
 public class App {
 
-    private static CleanUtil cleanUtil;
+    private static CleanUtil        cleanUtil;
+    private static Document         document;
+    private static BaseRepository   baseRepository;
 
     public static void main( String[] args ) {
 
-        String rawHTML  = new String(); // Raw HTML file
-        String pureText = new String(); // The test document without html tags and conjunctions
+        document            = new Document();
+        cleanUtil           = new CleanUtil();
 
-        rawHTML = readTestText();
-        cleanUtil = new CleanUtil(rawHTML);
+        document.setRawHTML(cleanUtil.getRawHTMLDocument(baseRepository.readTestText()));
+        document.setPureText(cleanUtil.removeConjunctions(document.getRawHTML().text()));
+        document.setSentences(cleanUtil.divideIntoSentences(document.getPureText()));
 
-        pureText = cleanUtil.removeConjunctions();
-        System.out.println(pureText);
+        System.out.println("Pure text: " + document.getPureText());
+
 
     }
 
-    public static String readTestText(){
-        String testText = new String();
 
-        try{
-            File file =
-                    new File(System.getProperty("user.dir") + "/data/data.txt");
-            Scanner sc = new Scanner(file);
-
-            while (sc.hasNextLine()){
-                testText += sc.nextLine() + "\n";
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return testText;
-    }
 }
