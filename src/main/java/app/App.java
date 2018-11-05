@@ -24,9 +24,6 @@ public class App {
         document.setPureText(cleanUtil.removeConjunctions(document.getRawHTML().text()));
         document.setSentences(cleanUtil.divideIntoSentences(document.getPureText()));
 
-        System.out.println("Pure text: " + document.getPureText());
-
-
     }
 
 

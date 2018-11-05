@@ -48,13 +48,15 @@ public class CleanUtil {
     }
 
     public List<String> divideIntoSentences(String pureText){
+        ArrayList<String> resultList = new ArrayList<>();
+
         Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
         Matcher reMatcher = re.matcher(pureText);
         while (reMatcher.find()) {
-            System.out.println(reMatcher.group());
+            resultList.add(reMatcher.group());
         }
 
-        return Arrays.asList(pureText.split("\n"));
+        return resultList;
     }
 
 }
