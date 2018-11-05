@@ -12,34 +12,38 @@ import java.util.Scanner;
 
 public class CleanUtil {
 
-    public String removeHtmlTags(String htmlContent){
-        String result   = new String();
+    private Document document; // Raw HTML file in Jsoup Document format
+    private String   text;     // Removed HTML tags version of Document
 
-        try {
-            FileReader fr = new FileReader();
-            fr.
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return result;
+    public CleanUtil(String rawHtml){
+        document    = Jsoup.parse(rawHtml);
+        text        = document.text().toLowerCase();
     }
 
-    public String readTextFile(){
-        String testText = new String();
+    public String removeConjunctions(){
 
         try{
             File file =
-                    new File(System.getProperty("user.dir") + "/data/data.txt");
+                    new File(System.getProperty("user.dir") + "/data/conjunctions.txt");
             Scanner sc = new Scanner(file);
 
-            while (sc.hasNextLine())
-                System.out.println(sc.nextLine());
+            String temp = new String();
+            while (sc.hasNextLine()){
+                temp += sc.nextLine() + "\n";
+            }
+
+            String[] conjunctionList = temp.split(",");
+            for (String conjunction : conjunctionList){
+                text = text.replaceAll(" " + conjunction + " ", " ");
+            }
+
         }catch (IOException e){
             e.printStackTrace();
         }
 
-        return testText;
+        return text;
     }
+
+
 
 }
