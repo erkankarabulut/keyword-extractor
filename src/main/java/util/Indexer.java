@@ -17,6 +17,7 @@ public class Indexer {
                 tempSentence.add(temp);
             }
 
+            java.util.Collections.sort(tempSentence);
             resultList.add(tempSentence);
         }
 
