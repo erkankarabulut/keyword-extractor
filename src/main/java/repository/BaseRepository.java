@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class BaseRepository {
 
+    // This method is created for test purposes. It reads a data file which includues an html page and returns it's content
+
     public static String readTestText(){
         String testText = new String();
 

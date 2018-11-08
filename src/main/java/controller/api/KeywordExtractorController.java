@@ -14,14 +14,24 @@ import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 
+// Controller class for the api
+
 @Path("/extract")
 public class KeywordExtractorController {
+
+    /**
+     * Keyword extractor method end point.
+     *
+     * @param request HttpServletRequest
+     * @param form    MultivaluedMap
+     * @return JSONData
+     */
 
     @POST
     @Path("/keyword")
     @Consumes(APPLICATION_FORM_URLENCODED)
     @Produces("application/json;charset=utf-8")
-    public Response getSiteAllCallReport(@Context HttpServletRequest request, MultivaluedMap<String,String> form){
+    public Response extractKeywords(@Context HttpServletRequest request, MultivaluedMap<String,String> form){
         JSONObject data = KeywordExtractorProvider.indexDocument(request, form);
 
         return Response.ok().entity(data.toString()).build();

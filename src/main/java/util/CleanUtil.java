@@ -17,6 +17,11 @@ import java.util.regex.Pattern;
 
 public class CleanUtil {
 
+    // This method removes conjunctions from a given html file content
+
+    // @param text Html content
+
+    // @return Remove conjunction version of given text
 
     public String removeConjunctions(String text){
         String result = text;
@@ -44,9 +49,21 @@ public class CleanUtil {
         return result;
     }
 
+    // It parses raw html content to xml document
+
+    // @param text Html content
+
+    // @return xml doc
+
     public Document getRawHTMLDocument(String htmlContent){
         return Jsoup.parse(htmlContent);
     }
+
+    // It divides given text into sentences with using a regex
+
+    // @param pureText The text that does not contains any conjunction or html tag
+
+    // @return sentece list
 
     public List<String> divideIntoSentences(String pureText){
         ArrayList<String> resultList = new ArrayList<>();

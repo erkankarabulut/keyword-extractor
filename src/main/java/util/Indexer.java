@@ -5,6 +5,12 @@ import java.util.List;
 
 public class Indexer {
 
+    // It rotates every sentences word.count times and sorts
+
+    // @param sentenceList sentence list
+
+    // @return Rotated and sorted version of senetences
+
     public List<List<String>> rotateSentences(List<String> sentenceList){
         List<List<String>> resultList = new ArrayList<>();
         for(String sentence : sentenceList){
@@ -23,6 +29,13 @@ public class Indexer {
 
         return resultList;
     }
+
+    // Rotate a single sentence
+
+    // @param words Word list of sentence
+    // @param startIndex index that shows the next rotation point
+
+    // @return rotated version of sentence
 
     public String rotate(String[] words, Integer startIndex){
         String result = new String();

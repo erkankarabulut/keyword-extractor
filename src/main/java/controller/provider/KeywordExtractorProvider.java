@@ -16,6 +16,13 @@ public class KeywordExtractorProvider {
     private static Document         document;
     private static BaseRepository baseRepository;
 
+    // Index document by extracting keywords
+
+    // @param request       HttpServletRequest
+    // @param form          MultivaluedMap
+
+    // @return JSONObject   result
+
     public static JSONObject indexDocument(HttpServletRequest request, MultivaluedMap form){
         JSONObject result = new JSONObject();
 
