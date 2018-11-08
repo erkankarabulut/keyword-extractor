@@ -34,7 +34,7 @@ public class KeywordExtractorController {
     public Response extractKeywords(@Context HttpServletRequest request, MultivaluedMap<String,String> form){
         JSONObject data = KeywordExtractorProvider.indexDocument(request, form);
 
-        return Response.ok().entity(data.toString()).build();
+        return Response.status(data.getInt("status")).entity(data.toString()).build();
     }
 
 }
