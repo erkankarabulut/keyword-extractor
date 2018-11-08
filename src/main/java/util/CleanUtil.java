@@ -22,8 +22,9 @@ public class CleanUtil {
         String result = text;
 
         try{
+
             File file =
-                    new File(System.getProperty("user.dir") + "/data/conjunctions.txt");
+                    new File(this.getClass().getResource("").getPath() + "../../../../../../data/conjunctions.txt");
             Scanner sc = new Scanner(file);
 
             String temp = new String();
